@@ -35,7 +35,7 @@ public class MyWorld extends World {
             {10, 10, 6, 6, 6, 6, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
             {10, 10, 6, 6, 6, 6, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
         };
-
+        
         // Declareren en initialiseren van de TileEngine klasse om de map aan de world toe te voegen
         TileEngine te = new TileEngine(this, 60, 60, map);
         // Declarenre en initialiseren van de camera klasse met de TileEngine klasse 
@@ -52,7 +52,7 @@ public class MyWorld extends World {
         addObject(camera, 0, 0);
         addObject(hero, 300, 200);
         addObject(new Enemy(), 1170, 410);
-        addObject(new Coin(), 689, 389);
+        
         
         
         // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.
