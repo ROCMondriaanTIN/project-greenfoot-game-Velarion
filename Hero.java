@@ -1,4 +1,5 @@
 
+
 import greenfoot.*;
 
 /**
@@ -6,11 +7,11 @@ import greenfoot.*;
  * @author R. Springer
  */
 public class Hero extends Mover {
-
     private final double gravity;
     private final double acc;
     private final double drag;
-
+    public boolean inAir;
+    
     public Hero() {
         super();
         gravity = 9.8;
@@ -36,17 +37,25 @@ public class Hero extends Mover {
                 break;
             }
         }
-    }
-
+        
+        
+}
     public void handleInput() {
-        if (Greenfoot.isKeyDown("w")) {
-            velocityY = -10;
-        }
-
+        if (Greenfoot.isKeyDown("space")) {
+            for (Tile tile : getIntersectingObjects(Tile.class)) {
+                if (tile != null) {
+                    inAir = false;
+                    velocityY = -8;
+                }
+                else {
+                    inAir = true;
+                }
+            }
+}
         if (Greenfoot.isKeyDown("a")) {
-            velocityX = -2;
+            velocityX = -7;
         } else if (Greenfoot.isKeyDown("d")) {
-            velocityX = 2;
+            velocityX = 7;
         }
     }
 
