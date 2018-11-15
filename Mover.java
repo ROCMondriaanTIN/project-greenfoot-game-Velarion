@@ -1,10 +1,5 @@
-
 import greenfoot.*;
 
-/**
- *
- * @author R. Springer
- */
 public class Mover extends Actor {
 
     public int screenX;

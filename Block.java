@@ -1,24 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Block here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Block extends Mover
-{
-    /**
-     * Act - do whatever the Block wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-       applyVelocity();
-    }  
+public class Block extends Mover{
     public Block() {
        GreenfootImage image = getImage();
        image.scale(image.getWidth() - 10, image.getHeight() - 10);
        setImage(image);
     }
+    public void act() {
+       for (Actor hero : getIntersectingObjects(Hero.class)) {
+           if (isTouching(Block.class)) {
+               getImage().setTransparency(0);   
+           }    
+       }
+       applyVelocity();
+    }
+    public void mijnMethode() {
+        for (Actor gem : getIntersectingObjects(Gem.class)) {
+            getImage().setTransparency(0);   
+    }
 }
+}
+
