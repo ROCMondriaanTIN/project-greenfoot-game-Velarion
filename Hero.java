@@ -7,6 +7,9 @@ public class Hero extends Mover {
     private boolean inAir;
     private boolean onGround;
     private boolean keyObtained;
+    private boolean lookingLeft;
+    private boolean lookingRight;
+    
     private int animationCounter = 0; 
     
     private GreenfootImage p1right1 = new GreenfootImage("p1_walk1.png");
@@ -29,15 +32,18 @@ public class Hero extends Mover {
     private GreenfootImage p1left8 = new GreenfootImage("p1_walk8mirrored.png");
     private GreenfootImage p1left9 = new GreenfootImage("p1_walk9mirrored.png");
     
-    private GreenfootImage p1jump1 = new GreenfootImage("p1_jump.png");
-    private GreenfootImage p1jump2 = new GreenfootImage("p1.png");
+    private GreenfootImage p1jump1 = new GreenfootImage("p1_jump1.png");
+    private GreenfootImage p1jump2 = new GreenfootImage("p1_jump2.png");
+    private GreenfootImage p1duck1 = new GreenfootImage("p1_duck1.png");
+    private GreenfootImage p1duck2 = new GreenfootImage("p1_duck2.png");
     private int frame = 1;
-    
-    public Hero() {
+    private String name;
+    public Hero(String name) {
         super();
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
+        this.name = name;
         setImage("p1.png");
     }
 
@@ -72,7 +78,10 @@ public class Hero extends Mover {
         }
         applyVelocity();
 }
+
+     
     public void animateRight() {
+        lookingRight = true;
         if (frame == 1) {
             setImage(p1right1);
         }
@@ -103,9 +112,9 @@ public class Hero extends Mover {
             return;
         }  
         frame ++;
-       
 }
     public void animateLeft() {
+        lookingLeft = false;
         if (frame == 1) {
             setImage(p1left1);
         }
@@ -143,7 +152,14 @@ public class Hero extends Mover {
                 if (tile != null) {
                     inAir = false;
                     velocityY = -15; 
-                    setImage("p1_jump.png");
+                }
+                if (lookingRight == true) {
+                    setImage(p1jump1);
+                    lookingRight = false;
+                }
+                else if (lookingLeft == false) {
+                    setImage(p1jump2);
+                    lookingLeft = true;
                 }
                 else  {
                     inAir = true;
@@ -160,9 +176,14 @@ public class Hero extends Mover {
             velocityX = 8;
             animateRight();
 }
-        else if (Greenfoot.isKeyDown("s")) {
-            setImage("p1_duck.png");
-        }
+        else if (lookingRight == true && Greenfoot.isKeyDown("s")) {
+            setImage(p1duck1);
+            lookingRight = false;
+}
+        else if (lookingLeft == false && Greenfoot.isKeyDown("s")) {
+            setImage(p1duck2);
+            lookingLeft = true;
+}
 }
     public int getWidth() {
         return getImage().getWidth();
