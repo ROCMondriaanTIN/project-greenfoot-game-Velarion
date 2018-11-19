@@ -37,13 +37,12 @@ public class Hero extends Mover {
     private GreenfootImage p1duck1 = new GreenfootImage("p1_duck1.png");
     private GreenfootImage p1duck2 = new GreenfootImage("p1_duck2.png");
     private int frame = 1;
-    private String name;
-    public Hero(String name) {
+
+    public Hero() {
         super();
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
-        this.name = name;
         setImage("p1.png");
     }
 
@@ -74,8 +73,13 @@ public class Hero extends Mover {
         }
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
-            Greenfoot.setWorld(new Characterscreen());
+            Greenfoot.setWorld(new Level2());
         }
+        for (Actor player : getIntersectingObjects(Player.class)) {
+            if (Greenfoot.mouseClicked(1)) {
+            setImage("p2.png");
+        }
+    }
         applyVelocity();
 }
 
