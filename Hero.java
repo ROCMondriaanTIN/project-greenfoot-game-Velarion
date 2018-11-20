@@ -9,7 +9,6 @@ public class Hero extends Mover {
     private boolean keyObtained;
     private boolean lookingLeft;
     private boolean lookingRight;
-    
     private int animationCounter = 0; 
     
     private GreenfootImage p1right1 = new GreenfootImage("p1_walk1.png");
@@ -75,15 +74,12 @@ public class Hero extends Mover {
         && keyObtained == true) {
             Greenfoot.setWorld(new Level2());
         }
-        for (Actor player : getIntersectingObjects(Player.class)) {
-            if (Greenfoot.mouseClicked(1)) {
-            setImage("p2.png");
+        if (Greenfoot.mouseClicked(this)) {
+            Greenfoot.setWorld(new MyWorld());
+            
         }
-    }
         applyVelocity();
 }
-
-     
     public void animateRight() {
         lookingRight = true;
         if (frame == 1) {
