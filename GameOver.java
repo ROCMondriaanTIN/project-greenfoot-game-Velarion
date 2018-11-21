@@ -6,6 +6,6 @@ public class GameOver extends World {
         this.setBackground("GameOver.png");
         
         addObject(new GameOverHero(), 800, 600);
-        addObject(new ReturnButton(), 300, 600);
+        addObject(new ReturnButton(), 200, 650);
     }
 }
