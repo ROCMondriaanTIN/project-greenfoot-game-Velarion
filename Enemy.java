@@ -1,10 +1,5 @@
-
 import greenfoot.*;
 
-/**
- *
- * @author R. Springer
- */
 public class Enemy extends Mover {
 
     private int walkRange;
@@ -20,6 +15,9 @@ public class Enemy extends Mover {
         walkRange = 140;
         firstAct = true;
         speed = 1;
+        GreenfootImage image = getImage();
+        image.scale(image.getWidth() + 20, image.getHeight() + 20);
+        setImage(image);
     }
 
     @Override
@@ -32,7 +30,6 @@ public class Enemy extends Mover {
             xMin = x - walkRange / 2;
             xMax = x + walkRange / 2;
         }
-
         velocityX = speed;
         applyVelocity();
         if (getX() >= xMax) {

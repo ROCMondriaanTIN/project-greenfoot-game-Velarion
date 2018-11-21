@@ -6,10 +6,12 @@ public class Hero extends Mover {
     private final double drag;
     private boolean inAir;
     private boolean onGround;
-    private boolean keyObtained;
+    private boolean keyObtained = false;
     private boolean lookingLeft;
     private boolean lookingRight;
     private int animationCounter = 0; 
+    private int lifeAmount = 5;
+    private int scoreCounter = 0;
     
     private GreenfootImage p1right1 = new GreenfootImage("p1_walk1.png");
     private GreenfootImage p1right2 = new GreenfootImage("p1_walk2.png");
@@ -48,38 +50,76 @@ public class Hero extends Mover {
     @Override
     public void act() {
         handleInput();
+        key();
+        door();
+        enemy();
+        coin();
         animationCounter ++;
         velocityX *= drag;
         velocityY += acc;
         if (velocityY > gravity) {
             velocityY = gravity;
         }
-        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null) {
-                getWorld().removeObject(this);
-                break;
-            }
-        }  
-        if(isTouching(MovingPlatform1.class) || isTouching(MovingPlatform2.class)
-        || isTouching(MovingPlatform3.class)) {
-            velocityY = 0;
-        }
         if(isTouching(WaterTopMid.class)) {
             velocityY = 0;
         }
-        if (isTouching(Key.class)) {
-            keyObtained = true;
+        if (isTouching(MovingPlatform1.class) || 
+            isTouching(MovingPlatform2.class) || 
+            isTouching(MovingPlatform3.class)) {
+            velocityY = 0;
         }
+        applyVelocity();
+    }
+    public void key() {
+        if (isTouching(Key.class)) { 
+           keyObtained = true;
+        }
+    }
+    public void door() {
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level2());
         }
-        if (Greenfoot.mouseClicked(this)) {
-            Greenfoot.setWorld(new MyWorld());
-            
+    }
+    public void enemy() {
+        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
+            if (enemy != null) {
+                setLocation(83, 1035);
+                lifeCounter();
+                break;
+            }
+        }  
+    }
+    public void lifeCounter() {
+        lifeAmount -= 1;
+        if (lifeAmount == 0) {
+            Greenfoot.setWorld(new GameOver());
         }
-        applyVelocity();
-}
+    }
+    public void coin() {
+        for (Actor coin : getIntersectingObjects(Coins.class)) {
+            if (coin != null) {
+                if (this.isTouching(CoinGold.class)) {
+                    Actor coinGold = getOneIntersectingObject(CoinGold.class);  
+                    getWorld().removeObject(coinGold);
+                    scoreGold();
+                    break;
+                }
+                else if (this.isTouching(CoinSilver.class)){
+                    Actor coinSilver = getOneIntersectingObject(CoinSilver.class);  
+                    getWorld().removeObject(coinSilver);
+                    scoreSilver();
+                    break;
+                }
+            }
+        }
+    }
+    public void scoreGold() {
+        scoreCounter += 2;
+    }
+    public void scoreSilver() {
+        scoreCounter += 1;
+    }
     public void animateRight() {
         lookingRight = true;
         if (frame == 1) {
@@ -112,7 +152,7 @@ public class Hero extends Mover {
             return;
         }  
         frame ++;
-}
+    }
     public void animateLeft() {
         lookingLeft = false;
         if (frame == 1) {
@@ -145,7 +185,7 @@ public class Hero extends Mover {
             return;
         }  
         frame ++;
-}
+    }
     public void handleInput() {
         if (Greenfoot.isKeyDown("space")) {
             for (Tile tile : getIntersectingObjects(Tile.class)) {
@@ -165,26 +205,26 @@ public class Hero extends Mover {
                     inAir = true;
                 } 
             }
-}
+        }
         if (Greenfoot.isKeyDown("a")) {
             if(animationCounter % -4 == 0)
-            velocityX = -8; 
+            velocityX = -9; 
             animateLeft();
-} 
+        } 
         else if (Greenfoot.isKeyDown("d")) {
             if(animationCounter % 4 == 0)
-            velocityX = 8;
+            velocityX = 9;
             animateRight();
-}
+        }
         else if (lookingRight == true && Greenfoot.isKeyDown("s")) {
             setImage(p1duck1);
             lookingRight = false;
-}
+        }
         else if (lookingLeft == false && Greenfoot.isKeyDown("s")) {
             setImage(p1duck2);
             lookingLeft = true;
-}
-}
+        }
+    }
     public int getWidth() {
         return getImage().getWidth();
     }
