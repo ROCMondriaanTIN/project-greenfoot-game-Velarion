@@ -53,6 +53,7 @@ public class Hero extends Mover {
         key();
         door();
         enemy();
+        fireball();
         coin();
         animationCounter ++;
         velocityX *= drag;
@@ -84,6 +85,15 @@ public class Hero extends Mover {
     public void enemy() {
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
+                setLocation(83, 1035);
+                lifeCounter();
+                break;
+            }
+        }  
+    }
+    public void fireball() {
+        for (Actor fireball : getIntersectingObjects(Fireball.class)) {
+            if (fireball != null) {
                 setLocation(83, 1035);
                 lifeCounter();
                 break;

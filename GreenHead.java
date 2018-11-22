@@ -7,6 +7,5 @@ public class GreenHead extends Mover {
         setImage(image);
     }
     public void act() {
-        
     }    
 }
