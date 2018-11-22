@@ -11,6 +11,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
         velocityX = 0;
         velocityY = 0;
         applyVelocity();
-        turn(17);
+        turn(15);
     }    
 }
