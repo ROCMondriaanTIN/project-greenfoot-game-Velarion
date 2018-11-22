@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Roze1 extends Mover {
     private boolean onThis = false;
-    int character = 3;
+    int character;
     
     public Roze1(int character) {
         this.character = character;
@@ -16,10 +16,10 @@ public class Roze1 extends Mover {
             setImage("Roze1.png"); 
         if (Greenfoot.mouseClicked(this)){
             character = 3;
-            MyWorld myworld = new MyWorld(character);
+            //MyWorld myworld = new MyWorld(character);
             //Blauw1 blauw = new Blauw1(character);
-            Groen1 groen = new Groen1(character);
-            Roze1 roze = new Roze1(character);
+            //Groen1 groen = new Groen1(character);
+            //Roze1 roze = new Roze1(character);
             Greenfoot.setWorld(new MyWorld(character));
         }
     }    
