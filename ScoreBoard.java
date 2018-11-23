@@ -6,9 +6,29 @@ public class ScoreBoard extends Mover {
     private int lifePosition = 30;
     private int score = 0;
     private int life = 2;
-    private int Silver = 30;
-    
+    int character;
+
     public void act() {
+        applyVelocity();
+    } 
+    public void addSilver() {
+        score += 1;
+        
+        silverPosition += 15;
+        
+    }
+    public void addGold() {
+        score += 2;
        
-    }    
+        goldPosition += 15;
+       
+    }
+    public void healthAdd() {
+        if (score == 20) {
+            life += 1;
+            getWorld().addObject(new LifeCoin(character), lifePosition, 40);
+            lifePosition += 50;
+            score = 0;
+        }
+    }
 }

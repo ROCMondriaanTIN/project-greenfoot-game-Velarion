@@ -84,6 +84,8 @@ public class MyWorld extends World {
         addObject(new WaterTopMid(), 2490, 1170);
         addObject(new Door1(), 2910, 990);
         addObject(new Door2(), 2910, 1050);
+        addObject(new LifeCoin(character), 50, 50);
+        addObject(new LifeCoin(character), 100, 50);
         // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.
         // De collision engine kijkt alleen naar de tiles die de variabele solid op true hebben staan.
         ce = new CollisionEngine(te, camera);

@@ -15,13 +15,7 @@ public class Groen1 extends Mover {
         else
             setImage("Groen1.png"); 
         if (Greenfoot.mouseClicked(this)){
-            //character = 1;
-            //MyWorld myworld = new MyWorld(character);
-            //Blauw1 blauw = new Blauw1(character);
-            //Groen1 groen = new Groen1(character);
-            //Roze1 roze = new Roze1(character);
             Greenfoot.setWorld(new MyWorld(character));
-            
         }
     } 
 }

@@ -13,42 +13,20 @@ public class Hero extends Mover {
     private int lifeAmount = 4;
     private int scoreCounter = 0;
     int character;
-    
-    
-    
-    private GreenfootImage p1right1 = new GreenfootImage("p1_walk1.png");
-    private GreenfootImage p1right2 = new GreenfootImage("p1_walk2.png");
-    private GreenfootImage p1right3 = new GreenfootImage("p1_walk3.png");
-    private GreenfootImage p1right4 = new GreenfootImage("p1_walk4.png");
-    private GreenfootImage p1right5 = new GreenfootImage("p1_walk5.png");
-    private GreenfootImage p1right6 = new GreenfootImage("p1_walk6.png");
-    private GreenfootImage p1right7 = new GreenfootImage("p1_walk7.png");
-    private GreenfootImage p1right8 = new GreenfootImage("p1_walk8.png");
-    private GreenfootImage p1right9 = new GreenfootImage("p1_walk9.png");
-    
-    private GreenfootImage p1left1 = new GreenfootImage("p1_walk1mirrored.png");
-    private GreenfootImage p1left2 = new GreenfootImage("p1_walk2mirrored.png");
-    private GreenfootImage p1left3 = new GreenfootImage("p1_walk3mirrored.png");
-    private GreenfootImage p1left4 = new GreenfootImage("p1_walk4mirrored.png");
-    private GreenfootImage p1left5 = new GreenfootImage("p1_walk5mirrored.png");
-    private GreenfootImage p1left6 = new GreenfootImage("p1_walk6mirrored.png");
-    private GreenfootImage p1left7 = new GreenfootImage("p1_walk7mirrored.png");
-    private GreenfootImage p1left8 = new GreenfootImage("p1_walk8mirrored.png");
-    private GreenfootImage p1left9 = new GreenfootImage("p1_walk9mirrored.png");
-    
-    private GreenfootImage p1jump1 = new GreenfootImage("p1_jump1.png");
-    private GreenfootImage p1jump2 = new GreenfootImage("p1_jump2.png");
-    private GreenfootImage p1duck1 = new GreenfootImage("p1_duck1.png");
-    private GreenfootImage p1duck2 = new GreenfootImage("p1_duck2.png");
     private int frame = 1;
-
+    
+    ScoreBoard sb;
+    
+    
+    
     public Hero(int character) {
         super();
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
-        setImage("p"+ character +".png");
+        setImage("p" + character + ".png");
         this.character = character;
+        
     }
 
     @Override
@@ -91,6 +69,7 @@ public class Hero extends Mover {
             if (enemy != null) {
                 setLocation(83, 1035);
                 lifeCounter();
+                healthRemove();
                 break;
             }
         }  
@@ -100,15 +79,21 @@ public class Hero extends Mover {
             if (fireball != null) {
                 setLocation(83, 1035);
                 lifeCounter();
+                healthRemove();
                 break;
             }
         }  
-    }
+    }    
     public void lifeCounter() {
         lifeAmount -= 1;
         if (lifeAmount == 0) {
             Greenfoot.setWorld(new GameOver());
         }
+    }
+    public void healthRemove() {
+        for (Actor lifeCoin : getIntersectingObjects(LifeCoin.class)) {
+            getWorld().removeObject(lifeCoin);
+       }
     }
     public void coin() {
         for (Actor coin : getIntersectingObjects(Coins.class)) {
@@ -135,8 +120,9 @@ public class Hero extends Mover {
         scoreCounter += 1;
     }
     public void animateRight(int character) {
+        this.character = character;
         lookingRight = true;
-        this.character =character;
+        
         if (frame == 1) {
             setImage("p"+ character +"_walk1.png");
         }
@@ -169,40 +155,40 @@ public class Hero extends Mover {
         frame ++;
     }
     public void animateLeft(int character) {
-        lookingLeft = false;
         this.character = character;
+        lookingLeft = false;
         
         if (frame == 1) {
-            setImage("p"+ character +"_walk1mirrored.png");
+            setImage("p" + character + "_walk1mirrored.png");
         }
         else if (frame == 2) {
-            setImage("p"+ character +"_walk2mirrored.png");
+            setImage("p" + character + "_walk2mirrored.png");
         }
         else if (frame == 3) {
-            setImage("p"+ character +"_walk3mirrored.png");
+            setImage("p" + character + "_walk3mirrored.png");
         }  
         else if (frame == 4) {
-            setImage("p"+ character +"_walk4mirrored.png");
+            setImage("p" + character + "_walk4mirrored.png");
         }
         else if (frame == 5) {
-            setImage("p"+ character +"_walk5mirrored.png");
+            setImage("p" + character + "_walk5mirrored.png");
         }  
         else if (frame == 6) {
-            setImage("p"+ character +"_walk6mirrored.png");
+            setImage("p" + character + "_walk6mirrored.png");
         }
         else if (frame == 7) {
-            setImage("p"+ character +"_walk7mirrored.png");
+            setImage("p" + character + "_walk7mirrored.png");
         }  
         else if (frame == 8) {
-            setImage("p"+ character +"_walk8mirrored.png");
+            setImage("p" + character + "_walk8mirrored.png");
         }
         else if (frame == 9) {
-            setImage("p"+ character +"_walk9mirrored.png");
+            setImage("p" + character + "_walk9mirrored.png");
             frame = 1;
             return;
         }  
         frame ++;
-    }
+   }
     public void handleInput(int character) {
         this.character = character;
         if (Greenfoot.isKeyDown("space")) {
@@ -212,11 +198,11 @@ public class Hero extends Mover {
                     velocityY = -15; 
                 }
                 if (lookingRight == true) {
-                    setImage("p"+character+"_jump1.png");
+                    setImage("p" + character + "_jump.png");
                     lookingRight = false;
                 }
                 else if (lookingLeft == false) {
-                    setImage("p"+character+"_jump2.png");
+                    setImage("p" + character + "_jumpmirrored.png");
                     lookingLeft = true;
                 }
                 else  {
@@ -226,27 +212,27 @@ public class Hero extends Mover {
         }
         if (Greenfoot.isKeyDown("a")) {
             if(animationCounter % -4 == 0)
-            velocityX = -9; 
+            velocityX = -8; 
             animateLeft(character);
         } 
         else if (Greenfoot.isKeyDown("d")) {
             if(animationCounter % 4 == 0)
-            velocityX = 9;
+            velocityX = 8;
             animateRight(character);
         }
         else if (lookingRight == true && Greenfoot.isKeyDown("s")) {
-            setImage(p1duck1);
+            setImage("p" + character + "_duck.png");
             lookingRight = false;
         }
         else if (lookingLeft == false && Greenfoot.isKeyDown("s")) {
-            setImage(p1duck2);
+            setImage("p" + character + "_duckmirrored.png");
             lookingLeft = true;
         }
-    }
+   }
     public int getWidth() {
         return getImage().getWidth();
-    }
+   }
     public int getHeight() {
         return getImage().getHeight();
-    }  
+   }  
 }
