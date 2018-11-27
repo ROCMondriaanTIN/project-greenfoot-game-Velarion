@@ -31,6 +31,10 @@ public class Hero extends Mover {
 
     @Override
     public void act() {
+        if(sb == null){
+            sb = new ScoreBoard();
+            getWorld().addObject(sb, + 50, + 50);
+        }
         handleInput(character);
         key();
         door();
@@ -84,28 +88,32 @@ public class Hero extends Mover {
     }    
     public void lifeCounter() {
         lifeAmount -= 1;
-        Actor lifeCoin = getOneIntersectingObject(LifeCoin.class);  
-        getWorld().removeObject(lifeCoin);
         if (lifeAmount == 0) {
             Greenfoot.setWorld(new GameOver());
         }
     }
 
     public void coin() {
-        for (Actor coin : getIntersectingObjects(Coins.class)) {
+        for (Actor coin : getIntersectingObjects(CoinGold.class)) {
             if (coin != null) {
                 if (this.isTouching(CoinGold.class)) {
                     Actor coinGold = getOneIntersectingObject(CoinGold.class);  
                     getWorld().removeObject(coinGold);
                     scoreGold();
-                    break;
+                    sb.addGold();
                 }
-                else if (this.isTouching(CoinSilver.class)){
+                break;
+            }
+        }
+        for (Actor coin2 : getIntersectingObjects(CoinSilver.class)) {
+            if (coin2 != null) {
+                if (this.isTouching(CoinSilver.class)){
                     Actor coinSilver = getOneIntersectingObject(CoinSilver.class);  
                     getWorld().removeObject(coinSilver);
                     scoreSilver();
-                    break;
+                    sb.addSilver();
                 }
+                break;
             }
         }
     }

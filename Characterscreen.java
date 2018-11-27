@@ -7,7 +7,7 @@ public class Characterscreen extends World {
     
     public Characterscreen() {    
         super(1000, 800, 1); 
-        setBackground("BackgroundCharacterscreen.png");
+        setBackground("BackgroundCharacterScreen.png");
         
         
         addObject(new GreenHead(), 180, 400);

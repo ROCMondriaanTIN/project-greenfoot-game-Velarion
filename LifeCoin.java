@@ -8,5 +8,6 @@ public class LifeCoin extends Mover {
         setImage("hud_p" + character + ".png");
     }
     public void act()  {
+        applyVelocity();
     }   
 }
