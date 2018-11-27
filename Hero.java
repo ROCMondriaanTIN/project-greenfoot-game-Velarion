@@ -66,10 +66,9 @@ public class Hero extends Mover {
     }
     public void enemy() {
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null) {
+            if (this.isTouching(Enemy.class)) {
                 setLocation(83, 1035);
                 lifeCounter();
-                healthRemove();
                 break;
             }
         }  
@@ -79,22 +78,19 @@ public class Hero extends Mover {
             if (fireball != null) {
                 setLocation(83, 1035);
                 lifeCounter();
-                healthRemove();
                 break;
             }
         }  
     }    
     public void lifeCounter() {
         lifeAmount -= 1;
+        Actor lifeCoin = getOneIntersectingObject(LifeCoin.class);  
+        getWorld().removeObject(lifeCoin);
         if (lifeAmount == 0) {
             Greenfoot.setWorld(new GameOver());
         }
     }
-    public void healthRemove() {
-        for (Actor lifeCoin : getIntersectingObjects(LifeCoin.class)) {
-            getWorld().removeObject(lifeCoin);
-       }
-    }
+
     public void coin() {
         for (Actor coin : getIntersectingObjects(Coins.class)) {
             if (coin != null) {

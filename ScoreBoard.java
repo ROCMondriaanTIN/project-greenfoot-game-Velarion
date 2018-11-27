@@ -13,7 +13,7 @@ public class ScoreBoard extends Mover {
     } 
     public void addSilver() {
         score += 1;
-        
+       
         silverPosition += 15;
         
     }
@@ -26,7 +26,7 @@ public class ScoreBoard extends Mover {
     public void healthAdd() {
         if (score == 20) {
             life += 1;
-            getWorld().addObject(new LifeCoin(character), lifePosition, 40);
+            
             lifePosition += 50;
             score = 0;
         }
