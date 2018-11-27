@@ -6,10 +6,10 @@ public class ScoreBoard extends Mover {
     private int lifePosition = 40;
     private int score = 0;
     private int life = 2;
-    int character;
+    public int character;
 
     public void act() {
-        healthAdd();
+        healthAdd(character);
     } 
     public void addSilver() {
         score += 1;
@@ -21,17 +21,19 @@ public class ScoreBoard extends Mover {
         getWorld().addObject(new Gold(), goldPosition, 230);
         goldPosition += 25;
     }
-    public void healthAdd() {
-        for (Actor health : getIntersectingObjects(LifeCoin.class)) {
-            getWorld().addObject(new LifeCoin(character), lifePosition, 120);
-            getWorld().addObject(new LifeCoin(character), lifePosition, 50);
-            break;
-        }
+    public void healthAdd(int character) {
+        this.character = character;
+        getWorld().addObject(new LifeCoin(character), lifePosition, 50);
+        getWorld().addObject(new LifeCoin(character), 100, 50);
         if (score == 20) {
             life += 1;
             getWorld().addObject(new LifeCoin(character), lifePosition, 50);
             lifePosition += 50;
             score = 0;
         }
+    }
+    public void healthRemove() {
+        Actor lifeCoin = getOneIntersectingObject(LifeCoin.class);  
+        getWorld().removeObject(lifeCoin);
     }
 }

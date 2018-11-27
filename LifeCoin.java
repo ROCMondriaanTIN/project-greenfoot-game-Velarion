@@ -5,11 +5,9 @@ public class LifeCoin extends Mover {
     
     public LifeCoin(int character) {
         this.character = character;
-        GreenfootImage image = getImage();
-        image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage("hud_p" + character + ".png");
     }
     public void act()  {
-        applyVelocity();
+        
     }   
 }

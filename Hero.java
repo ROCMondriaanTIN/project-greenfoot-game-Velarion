@@ -1,4 +1,4 @@
-import greenfoot.*;
+ import greenfoot.*;
 
 public class Hero extends Mover {
     private final double gravity;
@@ -26,7 +26,6 @@ public class Hero extends Mover {
         drag = 0.8;
         setImage("p" + character + ".png");
         this.character = character;
-        
     }
 
     @Override
@@ -35,6 +34,7 @@ public class Hero extends Mover {
             sb = new ScoreBoard();
             getWorld().addObject(sb, + 50, + 50);
         }
+        sb.healthAdd(character);
         handleInput(character);
         key();
         door();
@@ -73,6 +73,7 @@ public class Hero extends Mover {
             if (this.isTouching(Enemy.class)) {
                 setLocation(83, 1035);
                 lifeCounter();
+                sb.healthRemove();
                 break;
             }
         }  
@@ -82,6 +83,7 @@ public class Hero extends Mover {
             if (fireball != null) {
                 setLocation(83, 1035);
                 lifeCounter();
+                sb.healthRemove();
                 break;
             }
         }  
@@ -99,7 +101,6 @@ public class Hero extends Mover {
                 if (this.isTouching(CoinGold.class)) {
                     Actor coinGold = getOneIntersectingObject(CoinGold.class);  
                     getWorld().removeObject(coinGold);
-                    scoreGold();
                     sb.addGold();
                 }
                 break;
@@ -110,49 +111,42 @@ public class Hero extends Mover {
                 if (this.isTouching(CoinSilver.class)){
                     Actor coinSilver = getOneIntersectingObject(CoinSilver.class);  
                     getWorld().removeObject(coinSilver);
-                    scoreSilver();
                     sb.addSilver();
                 }
                 break;
             }
         }
     }
-    public void scoreGold() {
-        scoreCounter += 2;
-    }
-    public void scoreSilver() {
-        scoreCounter += 1;
-    }
     public void animateRight(int character) {
         this.character = character;
         lookingRight = true;
         
         if (frame == 1) {
-            setImage("p"+ character +"_walk1.png");
+            setImage("p" + character +"_walk1.png");
         }
         else if (frame == 2) {
-            setImage("p"+ character +"_walk2.png");
+            setImage("p" + character + "_walk2.png");
         }
         else if (frame == 3) {
-            setImage("p"+ character +"_walk3.png");
+            setImage("p" + character + "_walk3.png");
         }  
         else if (frame == 4) {
-            setImage("p"+ character +"_walk4.png");
+            setImage("p" + character + "_walk4.png");
         }
         else if (frame == 5) {
-            setImage("p"+ character +"_walk5.png");
+            setImage("p" + character + "_walk5.png");
         }  
         else if (frame == 6) {
-            setImage("p"+ character +"_walk6.png");
+            setImage("p" + character + "_walk6.png");
         }
         else if (frame == 7) {
-            setImage("p"+ character +"_walk7.png");
+            setImage("p" + character + "_walk7.png");
         }  
         else if (frame == 8) {
-            setImage("p"+ character +"_walk8.png");
+            setImage("p" + character + "_walk8.png");
         }
         else if (frame == 9) {
-            setImage("p"+ character +"_walk9.png");
+            setImage("p" + character + "_walk9.png");
             frame = 1;
             return;
         }  
@@ -214,21 +208,21 @@ public class Hero extends Mover {
                 } 
             }
         }
-        if (Greenfoot.isKeyDown("a")) {
+        if (Greenfoot.isKeyDown("left")) {
             if(animationCounter % -4 == 0)
             velocityX = -8; 
             animateLeft(character);
         } 
-        else if (Greenfoot.isKeyDown("d")) {
+        else if (Greenfoot.isKeyDown("right")) {
             if(animationCounter % 4 == 0)
             velocityX = 8;
             animateRight(character);
         }
-        else if (lookingRight == true && Greenfoot.isKeyDown("s")) {
+        else if (lookingRight == true && Greenfoot.isKeyDown("down")) {
             setImage("p" + character + "_duck.png");
             lookingRight = false;
         }
-        else if (lookingLeft == false && Greenfoot.isKeyDown("s")) {
+        else if (lookingLeft == false && Greenfoot.isKeyDown("down")) {
             setImage("p" + character + "_duckmirrored.png");
             lookingLeft = true;
         }
