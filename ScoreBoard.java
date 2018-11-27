@@ -15,13 +15,11 @@ public class ScoreBoard extends Mover {
         score += 1;
         getWorld().addObject(new Silver(), silverPosition, 190);
         silverPosition += 25;
-        
     }
     public void addGold() {
         score += 2;
         getWorld().addObject(new Gold(), goldPosition, 230);
         goldPosition += 25;
-       
     }
     public void healthAdd() {
         for (Actor health : getIntersectingObjects(LifeCoin.class)) {
