@@ -11,14 +11,11 @@ public class Hero extends Mover {
     private boolean lookingRight;
     private int animationCounter = 0; 
     private int lifeAmount = 4;
-    private int scoreCounter = 0;
     int character;
     private int frame = 1;
     
     ScoreBoard sb;
-    
-    
-    
+
     public Hero(int character) {
         super();
         gravity = 9.8;
@@ -32,7 +29,7 @@ public class Hero extends Mover {
     public void act() {
         if(sb == null){
             sb = new ScoreBoard();
-            getWorld().addObject(sb, + 50, + 50);
+            getWorld().addObject(sb, + 900, + 50);
         }
         sb.healthAdd(character);
         handleInput(character);
@@ -94,7 +91,6 @@ public class Hero extends Mover {
             Greenfoot.setWorld(new GameOver());
         }
     }
-
     public void coin() {
         for (Actor coin : getIntersectingObjects(CoinGold.class)) {
             if (coin != null) {
@@ -192,7 +188,7 @@ public class Hero extends Mover {
         if (Greenfoot.isKeyDown("space")) {
             for (Tile tile : getIntersectingObjects(Tile.class)) {
                 if (tile != null) {
-                    inAir =! false;
+                    inAir = false;
                     velocityY = -15; 
                 }
                 if (lookingRight == true) {

@@ -7,9 +7,10 @@ public class ScoreBoard extends Mover {
     private int score = 0;
     private int life = 2;
     public int character;
-
+    
     public void act() {
         healthAdd(character);
+        setImage(new GreenfootImage("Score : " + score, 24, Color.BLACK, null));
     } 
     public void addSilver() {
         score += 1;
@@ -24,16 +25,14 @@ public class ScoreBoard extends Mover {
     public void healthAdd(int character) {
         this.character = character;
         getWorld().addObject(new LifeCoin(character), lifePosition, 50);
-        getWorld().addObject(new LifeCoin(character), 100, 50);
-        if (score == 20) {
-            life += 1;
+        getWorld().addObject(new LifeCoin(character), 95, 50);
+        if (score == 40) {
+            lifePosition += 110;
             getWorld().addObject(new LifeCoin(character), lifePosition, 50);
-            lifePosition += 50;
             score = 0;
         }
     }
     public void healthRemove() {
-        Actor lifeCoin = getOneIntersectingObject(LifeCoin.class);  
-        getWorld().removeObject(lifeCoin);
+        
     }
 }

@@ -557,6 +557,9 @@ public class TileFactory {
                   tile = new Tile("snowMid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   tile.isSolid = true; 
                   break; 
+             case 140:
+                  tile = new Tile("grassCenter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                  break;
              default: 
                   tile = new Tile("bg.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   break;
