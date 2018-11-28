@@ -16,7 +16,7 @@ public class Hero extends Mover {
     
     ScoreBoard sb;
 
-    public Hero(int character) {
+    public Hero(int character) {         
         super();
         gravity = 9.8;
         acc = 0.6;
@@ -34,6 +34,7 @@ public class Hero extends Mover {
         sb.healthAdd(character);
         handleInput(character);
         key();
+        gem();
         door();
         enemy();
         fireball();
@@ -44,7 +45,7 @@ public class Hero extends Mover {
         if (velocityY > gravity) {
             velocityY = gravity;
         }
-        if(isTouching(WaterTopMid.class)) {
+        if (isTouching(WaterTopMid.class)) {
             velocityY = 0;
         }
         if (isTouching(MovingPlatform1.class) || 
@@ -59,6 +60,12 @@ public class Hero extends Mover {
            keyObtained = true;
         }
     }
+    public void gem() {
+        if (isTouching(Gem.class)) {
+            Actor gem = getOneIntersectingObject(Gem.class);  
+            getWorld().removeObject(gem);
+        }
+    }
     public void door() {
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
@@ -66,24 +73,18 @@ public class Hero extends Mover {
         }
     }
     public void enemy() {
-        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (this.isTouching(Enemy.class)) {
-                setLocation(83, 1035);
-                lifeCounter();
-                sb.healthRemove();
-                break;
-            }
-        }  
+        if (isTouching(Enemy.class)) {
+            setLocation(83, 1035);
+            lifeCounter();
+            sb.healthRemove();
+        }
     }
     public void fireball() {
-        for (Actor fireball : getIntersectingObjects(Fireball.class)) {
-            if (fireball != null) {
-                setLocation(83, 1035);
-                lifeCounter();
-                sb.healthRemove();
-                break;
-            }
-        }  
+        if (isTouching(Fireball.class)) {
+            setLocation(83, 1035);
+            lifeCounter();
+            sb.healthRemove();
+        } 
     }    
     public void lifeCounter() {
         lifeAmount -= 1;
@@ -92,27 +93,17 @@ public class Hero extends Mover {
         }
     }
     public void coin() {
-        for (Actor coin : getIntersectingObjects(CoinGold.class)) {
-            if (coin != null) {
-                if (this.isTouching(CoinGold.class)) {
-                    Actor coinGold = getOneIntersectingObject(CoinGold.class);  
-                    getWorld().removeObject(coinGold);
-                    sb.addGold();
-                }
-                break;
-            }
+        if (isTouching(CoinGold.class)) {
+            Actor coinGold = getOneIntersectingObject(CoinGold.class);  
+            getWorld().removeObject(coinGold);
+            sb.addGold();
+        }   
+        if (isTouching(CoinSilver.class)){
+            Actor coinSilver = getOneIntersectingObject(CoinSilver.class);  
+            getWorld().removeObject(coinSilver);
+            sb.addSilver();
         }
-        for (Actor coin2 : getIntersectingObjects(CoinSilver.class)) {
-            if (coin2 != null) {
-                if (this.isTouching(CoinSilver.class)){
-                    Actor coinSilver = getOneIntersectingObject(CoinSilver.class);  
-                    getWorld().removeObject(coinSilver);
-                    sb.addSilver();
-                }
-                break;
-            }
-        }
-    }
+    }       
     public void animateRight(int character) {
         this.character = character;
         lookingRight = true;
@@ -182,7 +173,7 @@ public class Hero extends Mover {
             return;
         }  
         frame ++;
-   }
+    }
     public void handleInput(int character) {
         this.character = character;
         if (Greenfoot.isKeyDown("space")) {
@@ -222,11 +213,11 @@ public class Hero extends Mover {
             setImage("p" + character + "_duckmirrored.png");
             lookingLeft = true;
         }
-   }
+    }
     public int getWidth() {
         return getImage().getWidth();
-   }
+    }
     public int getHeight() {
         return getImage().getHeight();
-   }  
+    }  
 }

@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Groen1 extends Mover {
+public class Groen1 extends Actor {
     private boolean onThis = false;
     public int character;
     

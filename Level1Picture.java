@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Level1Picture extends Mover {
+public class Level1Picture extends Actor {
     private boolean onThis = false;
     
     public Level1Picture() {

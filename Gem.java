@@ -1,5 +1,5 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 public class Gem extends Mover {
     private int transparency = 0;
@@ -10,14 +10,13 @@ public class Gem extends Mover {
         getImage().setTransparency(transparency);
     }   
     public void act() {
-        if(isTouching(Hero.class)) {
-            getWorld().removeObject(this);
-        }   
+        inRange();
         applyVelocity();
     }
     public void inRange() {
-        if(!getObjectsInRange(200, Hero.class).isEmpty()) {
-            transparency = 255;
+        List<Hero> heroes = (List<Hero>)getObjectsInRange(170, Hero.class);
+        if (!heroes.isEmpty()) {
+           getImage().setTransparency(255);
         }
     }
 }

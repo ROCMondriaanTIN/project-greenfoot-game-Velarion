@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class StartSpel extends Mover {
+public class StartSpel extends Actor {
     public StartSpel() {
 
     }

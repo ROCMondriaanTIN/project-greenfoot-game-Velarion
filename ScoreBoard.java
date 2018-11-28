@@ -23,14 +23,14 @@ public class ScoreBoard extends Mover {
         goldPosition += 25;
     }
     public void healthAdd(int character) {
-        this.character = character;
-        getWorld().addObject(new LifeCoin(character), lifePosition, 50);
-        getWorld().addObject(new LifeCoin(character), 95, 50);
-        if (score == 40) {
+       this.character = character;
+       // getWorld().addObject(new LifeCoin(character), lifePosition, 50);
+       // getWorld().addObject(new LifeCoin(character), 95, 50);
+       if (score == 40) {
             lifePosition += 110;
             getWorld().addObject(new LifeCoin(character), lifePosition, 50);
             score = 0;
-        }
+       }
     }
     public void healthRemove() {
         

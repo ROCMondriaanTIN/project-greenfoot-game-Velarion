@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
-public class ReturnButton extends Mover {
+public class ReturnButton extends Actor {
     private boolean onThis = false;
     
     public ReturnButton() {
