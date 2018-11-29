@@ -75,23 +75,15 @@ public class Hero extends Mover {
     public void enemy() {
         if (isTouching(Enemy.class)) {
             setLocation(83, 1035);
-            lifeCounter();
             sb.healthRemove();
         }
     }
     public void fireball() {
         if (isTouching(Fireball.class)) {
             setLocation(83, 1035);
-            lifeCounter();
             sb.healthRemove();
         } 
     }    
-    public void lifeCounter() {
-        lifeAmount -= 1;
-        if (lifeAmount == 0) {
-            Greenfoot.setWorld(new GameOver());
-        }
-    }
     public void coin() {
         if (isTouching(CoinGold.class)) {
             Actor coinGold = getOneIntersectingObject(CoinGold.class);  
