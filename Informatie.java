@@ -11,7 +11,7 @@ public class Informatie extends Actor {
         else
             setImage("informatie1.png"); 
         if (Greenfoot.mouseClicked(this)) {
-            Greenfoot.setWorld(new Level2());
+            Greenfoot.setWorld(new ControlsScherm());
         }    
     }    
 }
