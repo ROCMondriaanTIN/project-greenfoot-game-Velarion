@@ -1,20 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class StartSpel extends Actor {
+public class Controls extends Actor {
     private boolean onThis = false;
     
-    public StartSpel() {
-
-    }
     public void act() {
         if (Greenfoot.mouseMoved(null))
             onThis = Greenfoot.mouseMoved(this);
         if (onThis)
-            setImage("startSpel2.png"); 
+            setImage("controls2.png"); 
         else
-            setImage("startSpel1.png"); 
+            setImage("controls1.png"); 
         if (Greenfoot.mouseClicked(this)) {
-            Greenfoot.setWorld(new LevelSelect());
+            Greenfoot.setWorld(new Level2());
         }    
     }    
 }
