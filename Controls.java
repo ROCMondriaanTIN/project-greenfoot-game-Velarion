@@ -11,7 +11,7 @@ public class Controls extends Actor {
         else
             setImage("controls1.png"); 
         if (Greenfoot.mouseClicked(this)) {
-            Greenfoot.setWorld(new Level2());
+            Greenfoot.setWorld(new ControlsScherm());
         }    
     }    
 }

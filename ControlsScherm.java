@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ControlsScherm extends World {
     public ControlsScherm() {    
        super(1000, 800, 1); 
-       setBackground("bg.png");
+       setBackground("ControlsScherm.png");
        
-       //addObject(new ReturnButton(), 200, 650); 
+       addObject(new ReturnButton(), 200, 650); 
     }
 }
