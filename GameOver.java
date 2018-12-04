@@ -9,6 +9,6 @@ public class GameOver extends World {
         this.character = character;
         
         addObject(new GameOverHero(), 800, 600);
-        addObject(new ReturnButton(), 200, 650);
+        addObject(new ReturnButton(), 150, 700);
     }
 }

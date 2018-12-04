@@ -5,6 +5,6 @@ public class InformatieScherm extends World {
        super(1000, 800, 1); 
        setBackground("InformatieScherm.png");
        
-       //addObject(new ReturnButton(), 200, 650); 
+       addObject(new ReturnButton2(), 500, 700); 
     }
 }

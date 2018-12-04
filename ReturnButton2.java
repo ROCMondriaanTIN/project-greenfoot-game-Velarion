@@ -13,9 +13,9 @@ public class ReturnButton2 extends Actor {
         if(Greenfoot.mouseMoved(null))
             onThis = Greenfoot.mouseMoved(this);
         if(onThis)
-            setImage("ReturnButton2.png"); 
+            setImage("ReturnButton4.png"); 
         else
-            setImage("ReturnButton1.png"); 
+            setImage("ReturnButton3.png"); 
         if (Greenfoot.mouseClicked(this)) {
             Greenfoot.setWorld(new Titlescreen());
         }
