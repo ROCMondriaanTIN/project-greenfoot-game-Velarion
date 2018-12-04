@@ -69,7 +69,7 @@ public class Hero extends Mover {
     public void door() {
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
-            Greenfoot.setWorld(new Level2());
+            Greenfoot.setWorld(new Level2(character));
         }
     }
     public void enemy() {
