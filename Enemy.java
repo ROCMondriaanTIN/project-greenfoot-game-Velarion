@@ -37,8 +37,8 @@ public class Enemy extends Mover {
             speed *= -1;
             x = xMax;
             getImage().mirrorHorizontally();
-            } 
-            else if (getX() <= xMin) {
+        } 
+        else if (getX() <= xMin) {
             speed *= -1;
             x = xMin;
             getImage().mirrorHorizontally();

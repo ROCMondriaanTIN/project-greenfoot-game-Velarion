@@ -16,7 +16,7 @@ public class Roze1 extends Actor {
             setImage("Roze1.png"); 
         if (Greenfoot.mouseClicked(this)){
             character = 3;
-            Greenfoot.setWorld(new MyWorld(character));
+            Greenfoot.setWorld(new LevelSelect(character));
         }
     }    
 }

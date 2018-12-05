@@ -15,7 +15,7 @@ public class Groen1 extends Actor {
         else
             setImage("Groen1.png"); 
         if (Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new MyWorld(character));
+            Greenfoot.setWorld(new LevelSelect(character));
         }
     } 
 }

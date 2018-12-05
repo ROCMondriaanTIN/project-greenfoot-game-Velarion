@@ -1,15 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
     public class Fireball extends Mover {
-        public Fireball() {
+    public Fireball() {
         super();
+        setImage("fireball.png");
         GreenfootImage image = getImage();
-        image.scale(image.getWidth() + 30, image.getHeight() + 30);
+        image.scale(image.getWidth() + 20, image.getHeight() + 20);
         setImage(image);
     }
     public void act() {
-        velocityX = 0;
-        velocityY = 0;
         applyVelocity();
         turn(15);
     }    

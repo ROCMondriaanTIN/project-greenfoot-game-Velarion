@@ -2,10 +2,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Level1Picture extends Actor {
     private boolean onThis = false;
+    public int character;
     
-    public Level1Picture() {
+    public Level1Picture(int character) {
+        this.character = character;
         GreenfootImage image = getImage();
-        image.scale(image.getWidth() - 20, image.getHeight() - 20);
+        image.scale(image.getWidth() + 20, image.getHeight() + 20);
         setImage(image);
     }
     public void act() {
@@ -16,7 +18,7 @@ public class Level1Picture extends Actor {
         else
             setImage("Level1Picture1.png"); 
         if (Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new Characterscreen());
+            Greenfoot.setWorld(new MyWorld(character));
         }
     }    
 }

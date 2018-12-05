@@ -27,11 +27,11 @@ public class Hero extends Mover {
 
     @Override
     public void act() {
-        if(sb == null){
+        if (sb == null) {
             sb = new ScoreBoard();
             getWorld().addObject(sb, + 900, + 50);
         }
-        sb.healthAdd(character);
+        sb.beginHealth(character);
         handleInput(character);
         key();
         gem();
@@ -50,7 +50,10 @@ public class Hero extends Mover {
         }
         if (isTouching(MovingPlatform1.class) || 
             isTouching(MovingPlatform2.class) || 
-            isTouching(MovingPlatform3.class)) {
+            isTouching(MovingPlatform3.class) ||
+            isTouching(MovingPlatform4.class) ||
+            isTouching(MovingPlatform5.class) ||
+            isTouching(MovingPlatform6.class)) {
             velocityY = 0;
         }
         applyVelocity();
@@ -80,7 +83,7 @@ public class Hero extends Mover {
     }
     public void fireball() {
         if (isTouching(Fireball.class)) {
-            setLocation(83, 1035);
+            setLocation(83, 973);
             sb.healthRemove();
         } 
     }    
@@ -189,12 +192,12 @@ public class Hero extends Mover {
         }
         if (Greenfoot.isKeyDown("left")) {
             if(animationCounter % -4 == 0)
-            velocityX = -8; 
+            velocityX = -9; 
             animateLeft(character);
         } 
         else if (Greenfoot.isKeyDown("right")) {
             if(animationCounter % 4 == 0)
-            velocityX = 8;
+            velocityX = 9;
             animateRight(character);
         }
         else if (lookingRight == true && Greenfoot.isKeyDown("down")) {
