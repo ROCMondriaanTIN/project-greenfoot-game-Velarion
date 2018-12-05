@@ -45,9 +45,6 @@ public class Hero extends Mover {
         if (velocityY > gravity) {
             velocityY = gravity;
         }
-        if (isTouching(WaterTopMid.class)) {
-            velocityY = 0;
-        }
         if (isTouching(MovingPlatform1.class) || 
             isTouching(MovingPlatform2.class) || 
             isTouching(MovingPlatform3.class) ||
@@ -56,6 +53,13 @@ public class Hero extends Mover {
             isTouching(MovingPlatform6.class)) {
             velocityY = 0;
         }
+        if (isTouching(Water.class)) {
+                velocityY = 0;
+        }
+         if (isTouching(Lava.class)) {
+            setLocation(83, 973);
+            sb.healthRemove();
+        } 
         applyVelocity();
     }
     public void key() {
@@ -73,6 +77,10 @@ public class Hero extends Mover {
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level2(character));
+        }
+        if (isTouching(Door3.class) && isTouching(Door4.class) 
+        && keyObtained == true) {
+            Greenfoot.setWorld(new Level3(character));
         }
     }
     public void enemy() {

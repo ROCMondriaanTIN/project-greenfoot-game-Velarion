@@ -70,14 +70,14 @@ public class MyWorld extends World {
         addObject(new MovingPlatform1(), 2213, 1050);
         addObject(new MovingPlatform2(), 2273, 1050);
         addObject(new MovingPlatform3(), 2333, 1050);
-        addObject(new WaterTopMid(), 2070, 1170);
-        addObject(new WaterTopMid(), 2130, 1170);
-        addObject(new WaterTopMid(), 2190, 1170);
-        addObject(new WaterTopMid(), 2250, 1170);
-        addObject(new WaterTopMid(), 2310, 1170);
-        addObject(new WaterTopMid(), 2370, 1170);
-        addObject(new WaterTopMid(), 2430, 1170);
-        addObject(new WaterTopMid(), 2490, 1170);
+        addObject(new Water(), 2070, 1170);
+        addObject(new Water(), 2130, 1170);
+        addObject(new Water(), 2190, 1170);
+        addObject(new Water(), 2250, 1170);
+        addObject(new Water(), 2310, 1170);
+        addObject(new Water(), 2370, 1170);
+        addObject(new Water(), 2430, 1170);
+        addObject(new Water(), 2490, 1170);
         addObject(new Door1(), 2910, 990);
         addObject(new Door2(), 2910, 1050);
         // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.
