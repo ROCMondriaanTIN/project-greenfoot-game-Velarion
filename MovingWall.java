@@ -5,7 +5,7 @@ public class MovingWall extends Mover {
     private int yMin;
     private int yMax;
     private boolean firstAct;
-    private int speed;
+    private double speed;
     private boolean isSolid;
     
     public MovingWall() {
@@ -13,9 +13,9 @@ public class MovingWall extends Mover {
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage(image);
 
-        walkRange = 140;
+        walkRange = 190;
         firstAct = true;
-        speed = 1;
+        speed = 1.8;
         isSolid = true;
     }   
     

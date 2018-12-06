@@ -5,8 +5,8 @@ public class ScoreBoard extends Actor {
     private int silverPosition = 40;
     private int lifePosition = 150;
     private int lifePosition2 = 95;
-    static int score = 0;
-    static int life = 4;
+    public static int score = 0;
+    public static int life = 4;
     public int character;
     private boolean start = false;
     private boolean lost = true;

@@ -9,6 +9,7 @@ public class Hero extends Mover {
     private boolean keyObtained = false;
     private boolean lookingLeft;
     private boolean lookingRight;
+    private boolean touching = false;
     private int animationCounter = 0; 
     private int lifeAmount = 4;
     int character;
@@ -39,6 +40,7 @@ public class Hero extends Mover {
         enemy();
         fireball();
         coin();
+        movingWall();
         animationCounter ++;
         velocityX *= drag;
         velocityY += acc;
@@ -52,11 +54,20 @@ public class Hero extends Mover {
             isTouching(MovingPlatform5.class) ||
             isTouching(MovingPlatform6.class)) {
             velocityY = 0;
+            if (Greenfoot.isKeyDown("space")) {
+                velocityY = -15;
+            }
+        }
+        for (Actor wall : getIntersectingObjects(MovingWall.class)) {
+            if (isTouching(MovingWall.class) && !touching) {
+                velocityX = -1;
+            }
+            break;
         }
         if (isTouching(Water.class)) {
                 velocityY = 0;
         }
-         if (isTouching(Lava.class)) {
+        if (isTouching(Lava.class)) {
             setLocation(83, 973);
             sb.healthRemove();
         } 
@@ -107,6 +118,13 @@ public class Hero extends Mover {
             sb.addSilver();
         }
     }       
+    public void movingWall() {
+        if (getOneObjectAtOffset(-19, -10, MovingWall.class) != null 
+            || getOneObjectAtOffset(19, -10, MovingWall.class) != null) {  
+           setLocation(83, 973);
+           sb.healthRemove();
+        } 
+    }
     public void animateRight(int character) {
         this.character = character;
         lookingRight = true;
