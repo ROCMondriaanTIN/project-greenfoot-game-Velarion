@@ -18,7 +18,7 @@ public class Level1Picture extends Actor {
         else
             setImage("Level1Picture1.png"); 
         if (Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new MyWorld(character));
+            Greenfoot.setWorld(new Level1(character));
         }
     }    
 }

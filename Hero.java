@@ -58,11 +58,8 @@ public class Hero extends Mover {
                 velocityY = -15;
             }
         }
-        for (Actor wall : getIntersectingObjects(MovingWall.class)) {
-            if (isTouching(MovingWall.class) && !touching) {
+        if (isTouching(MovingWall.class) && !touching) {
                 velocityX = -1;
-            }
-            break;
         }
         if (isTouching(Water.class)) {
             velocityY = 0;
