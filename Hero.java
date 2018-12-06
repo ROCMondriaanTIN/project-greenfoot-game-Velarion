@@ -9,14 +9,14 @@ public class Hero extends Mover {
     private boolean keyObtained = false;
     private boolean lookingLeft;
     private boolean lookingRight;
-    private boolean touching = false;
     private int animationCounter = 0; 
     private int lifeAmount = 4;
     int character;
     private int frame = 1;
     
     ScoreBoard sb;
-
+    GoldenKey gk;
+    
     public Hero(int character) {         
         super();
         gravity = 9.8;
@@ -28,6 +28,7 @@ public class Hero extends Mover {
 
     @Override
     public void act() {
+        gk = new GoldenKey();
         if (sb == null) {
             sb = new ScoreBoard();
             getWorld().addObject(sb, + 900, + 50);
@@ -58,8 +59,8 @@ public class Hero extends Mover {
                 velocityY = -15;
             }
         }
-        if (isTouching(MovingWall.class) && !touching) {
-                velocityX = -1;
+        if (isTouching(MovingWall.class)) {
+            velocityX = -1;
         }
         if (isTouching(Water.class)) {
             velocityY = 0;
