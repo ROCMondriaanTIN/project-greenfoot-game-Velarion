@@ -65,7 +65,7 @@ public class Hero extends Mover {
             break;
         }
         if (isTouching(Water.class)) {
-                velocityY = 0;
+            velocityY = 0;
         }
         if (isTouching(Lava.class)) {
             setLocation(83, 973);
