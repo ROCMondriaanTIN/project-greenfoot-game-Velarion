@@ -15,7 +15,7 @@ public class MovingPlatform7 extends Mover {
 
         walkRange = 580;
         firstAct = true;
-        speed = 1;
+        speed = 2;
         isSolid = true;
     }   
     
