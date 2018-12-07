@@ -45,6 +45,7 @@ public class Hero extends Mover {
         fireball();
         coin();
         movingWall();
+        teleportBlock();
         animationCounter ++;
         velocityX *= drag;
         velocityY += acc;
@@ -101,6 +102,10 @@ public class Hero extends Mover {
         && keyObtained == true) {
             Greenfoot.setWorld(new Level3(character));
         }
+        if (isTouching(Door5.class) && isTouching(Door6.class) 
+        && keyObtained == true) {
+            Greenfoot.setWorld(new Level4(character));
+        }
     }
     public void enemy() {
         if (isTouching(Enemy.class)) {
@@ -132,6 +137,11 @@ public class Hero extends Mover {
            setLocation(83, 973);
            sb.healthRemove();
         } 
+    }
+    public void teleportBlock() {
+        if (isTouching(TeleportObject.class)) {
+            setLocation(624, 553);
+        }
     }
     public void animateRight(int character) {
         this.character = character;

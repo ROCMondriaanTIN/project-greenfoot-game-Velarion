@@ -14,9 +14,9 @@ public class Level3Picture extends Actor {
         if (Greenfoot.mouseMoved(null))
             onThis = Greenfoot.mouseMoved(this);
         if (onThis)
-            setImage("Level1Picture2.png"); 
+            setImage("Level3Picture2.png"); 
         else
-            setImage("Level1Picture1.png"); 
+            setImage("Level3Picture1.png"); 
         if (Greenfoot.mouseClicked(this)){
             Greenfoot.setWorld(new Level3(character));
         }
