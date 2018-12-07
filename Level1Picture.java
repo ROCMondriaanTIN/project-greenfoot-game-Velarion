@@ -4,6 +4,8 @@ public class Level1Picture extends Actor {
     private boolean onThis = false;
     public int character;
     
+    ScoreBoard sb;
+    
     public Level1Picture(int character) {
         this.character = character;
         GreenfootImage image = getImage();
@@ -11,6 +13,7 @@ public class Level1Picture extends Actor {
         setImage(image);
     }
     public void act() {
+        sb = new ScoreBoard();
         if(Greenfoot.mouseMoved(null))
             onThis = Greenfoot.mouseMoved(this);
         if(onThis)
@@ -19,6 +22,7 @@ public class Level1Picture extends Actor {
             setImage("Level1Picture1.png"); 
         if (Greenfoot.mouseClicked(this)){
             Greenfoot.setWorld(new Level1(character));
+            sb.reset();
         }
     }    
 }

@@ -5,8 +5,7 @@ public class Hero extends Mover {
     private final double acc;
     private final double drag;
     private boolean inAir;
-    private boolean onGround;
-    private boolean keyObtained = false;
+    private boolean keyObtained;
     private boolean lookingLeft;
     private boolean lookingRight;
     private int animationCounter = 0; 
@@ -81,11 +80,12 @@ public class Hero extends Mover {
         } 
         applyVelocity();
     }
-    public void key() {
+    public boolean key() {
         if (isTouching(Key.class)) { 
            keyObtained = true;
            gk.change();
         }
+        return keyObtained;
     }
     public void gem() {
         if (isTouching(Gem.class)) {

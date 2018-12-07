@@ -4,10 +4,9 @@ public class GoldenKey extends Key {
     public GoldenKey() {
         GreenfootImage image = getImage();
         image.scale(image.getWidth() + 10, image.getHeight() + 10);
-        setImage("goldKey.png");
+        setImage(image);
     } 
     public void change() {
-        GreenfootImage image = getImage();
         setImage("goldFullKey.png");
     }
     public void act() {

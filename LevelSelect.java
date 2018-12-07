@@ -2,12 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class LevelSelect extends World { 
     public int character;
-    private boolean keyObtained;
-    
+
     public LevelSelect(int character) {   
         super(1000, 800, 1); 
         this.character = character;
-        this.keyObtained = keyObtained;
         
         setBackground("bg.png");
         

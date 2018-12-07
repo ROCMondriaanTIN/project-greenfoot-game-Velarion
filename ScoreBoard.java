@@ -12,7 +12,6 @@ public class ScoreBoard extends Actor {
     private boolean lost = true;
         
     public void act() {
-        beginHealth(character);
         lifeCounter(character);
         setImage(new GreenfootImage("Score: " + score, 24, Color.BLACK, null));
     } 
@@ -69,5 +68,8 @@ public class ScoreBoard extends Actor {
             score = 0;
             start = false;
         }
-    } 
+    }
+    public void reset() {
+        score = 0;
+    }
 }

@@ -554,18 +554,27 @@ public class TileFactory {
                   tile = new Tile("snowMid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   tile.isSolid = true; 
                   break; 
-             case 140:
+             case  140:
                   tile = new Tile("grassCenter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   break;
-             case 141:
+             case  141:
                   tile = new Tile("castleCenter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   break;
-             case 142:
+             case  142:
                   tile = new Tile("castleHillLeft2.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT); 
                   break;
-             case 143:
+             case  143:
                   tile = new Tile("castleHillRight.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   break;
+             case  144:
+                  tile = new Tile("snowHillRight.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT); 
+                  break;
+             case  145:
+                  tile = new Tile("snowHillRight2.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT); 
+                  break;
+             case  146:
+                  tile = new Tile("snowCenter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                  break; 
              default: 
                   tile = new Tile("bg.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   break;

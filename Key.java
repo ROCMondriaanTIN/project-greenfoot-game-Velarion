@@ -7,7 +7,7 @@ public class Key extends Mover {
         setImage(image);
     } 
     public void act() {
-        if(isTouching(Hero.class)) {
+        if (isTouching(Hero.class)) {
             getWorld().removeObject(this);
         }     
         applyVelocity();

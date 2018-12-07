@@ -22,9 +22,7 @@ public class MovingWall extends Mover {
     public void act() {
         int x = getX();
         int y = getY();
-        
-    
-        
+ 
         if (firstAct) {
             firstAct = false;
             yMin = y - walkRange / 2;
