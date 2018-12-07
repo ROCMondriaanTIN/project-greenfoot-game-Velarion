@@ -7,6 +7,8 @@ public class GoldenKey extends Key {
         setImage("goldKey.png");
     } 
     public void change() {
+        GreenfootImage image = getImage();
+        setImage("goldFullKey.png");
     }
     public void act() {
         // Add your action code here.

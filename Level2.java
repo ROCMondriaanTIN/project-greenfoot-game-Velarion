@@ -74,9 +74,9 @@ public class Level2 extends World {
         addObject(new MovingPlatform4(), 1885, 553);
         addObject(new MovingPlatform5(), 1942, 553);
         addObject(new MovingPlatform6(), 1999, 553);
-        addObject(new MovingPlatform4(), 2354, 493 );
-        addObject(new MovingPlatform5(), 2411, 493);
-        addObject(new MovingPlatform6(), 2468, 493);
+        addObject(new MovingPlatform4(), 2334, 493 );
+        addObject(new MovingPlatform5(), 2391, 493);
+        addObject(new MovingPlatform6(), 2448, 493);
         addObject(new Lava(), 750, 1110);
         addObject(new Lava(), 810, 1110);
         addObject(new Lava(), 870, 1110);

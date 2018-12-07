@@ -28,7 +28,10 @@ public class Hero extends Mover {
 
     @Override
     public void act() {
-        gk = new GoldenKey();
+        if (gk == null) {
+            gk = new GoldenKey();
+            getWorld().addObject(gk, + 40, + 120);
+        }
         if (sb == null) {
             sb = new ScoreBoard();
             getWorld().addObject(sb, + 900, + 50);
@@ -59,6 +62,12 @@ public class Hero extends Mover {
                 velocityY = -15;
             }
         }
+        if (isTouching(MovingPlatform7.class)) {
+            velocityY = 0;
+            if (Greenfoot.isKeyDown("space")) {
+                velocityY = -15;
+            }
+        }    
         if (isTouching(MovingWall.class)) {
             velocityX = -1;
         }
@@ -74,6 +83,7 @@ public class Hero extends Mover {
     public void key() {
         if (isTouching(Key.class)) { 
            keyObtained = true;
+           gk.change();
         }
     }
     public void gem() {
