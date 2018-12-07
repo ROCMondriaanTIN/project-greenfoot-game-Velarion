@@ -1,4 +1,4 @@
- import greenfoot.*;
+import greenfoot.*;
 
 public class Hero extends Mover {
     private final double gravity;
