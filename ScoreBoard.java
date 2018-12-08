@@ -30,7 +30,6 @@ public class ScoreBoard extends Actor {
         if (start == false) {
             getWorld().addObject(new LifeCoin(character), 40, 50);
             getWorld().addObject(new LifeCoin(character), 95, 50);
-            getWorld().addObject(new GoldenKey(), 40, 120);
         }
         return start = true;
     }

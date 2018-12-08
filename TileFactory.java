@@ -575,6 +575,15 @@ public class TileFactory {
              case  146:
                   tile = new Tile("snowCenter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   break; 
+             case  147:
+                  tile = new Tile("sandHillLeft.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT); 
+                  break;
+             case  148:
+                  tile = new Tile("sandHillLeft2.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                  break; 
+             case  149:
+                  tile = new Tile("sandCenter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                  break;
              default: 
                   tile = new Tile("bg.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                   break;

@@ -45,6 +45,8 @@ public class Hero extends Mover {
         coin();
         movingWall();
         teleportBlock();
+        water();
+        lava();
         animationCounter ++;
         velocityX *= drag;
         velocityY += acc;
@@ -56,13 +58,16 @@ public class Hero extends Mover {
             isTouching(MovingPlatform3.class) ||
             isTouching(MovingPlatform4.class) ||
             isTouching(MovingPlatform5.class) ||
-            isTouching(MovingPlatform6.class)) {
+            isTouching(MovingPlatform6.class) ||
+            isTouching(MovingPlatform8.class) ||
+            isTouching(MovingPlatform9.class) ||
+            isTouching(MovingPlatform10.class)) {
             velocityY = 0;
             if (Greenfoot.isKeyDown("space")) {
                 velocityY = -15;
             }
         }
-        if (isTouching(MovingPlatform7.class)) {
+        if (isTouching(MovingPlatform7.class) || isTouching(MovingPlatform11.class)) {
             velocityY = 0;
             if (Greenfoot.isKeyDown("space")) {
                 velocityY = -15;
@@ -71,13 +76,6 @@ public class Hero extends Mover {
         if (isTouching(MovingWall.class)) {
             velocityX = -1;
         }
-        if (isTouching(Water.class)) {
-            velocityY = 0;
-        }
-        if (isTouching(Lava.class)) {
-            setLocation(83, 973);
-            sb.healthRemove();
-        } 
         applyVelocity();
     }
     public boolean key() {
@@ -105,6 +103,10 @@ public class Hero extends Mover {
         if (isTouching(Door5.class) && isTouching(Door6.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level4(character));
+        }
+        if (isTouching(Door7.class) && isTouching(Door8.class) 
+        && keyObtained == true) {
+            Greenfoot.setWorld(new Level1(character));
         }
     }
     public void enemy() {
@@ -142,6 +144,18 @@ public class Hero extends Mover {
         if (isTouching(TeleportObject.class)) {
             setLocation(624, 553);
         }
+    }
+    public void water() {
+        if (isTouching(Water.class)) {
+            setLocation(83, 1035);
+            sb.healthRemove();
+        }
+    }
+    public void lava() {
+        if (isTouching(Lava.class)) {
+            setLocation(83, 973);
+            sb.healthRemove();
+        } 
     }
     public void animateRight(int character) {
         this.character = character;
