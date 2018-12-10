@@ -5,7 +5,7 @@ public class Hero extends Mover {
     private final double acc;
     private final double drag;
     private boolean inAir;
-    private boolean keyObtained;
+    public boolean keyObtained;
     private boolean lookingLeft;
     private boolean lookingRight;
     private int animationCounter = 0; 
@@ -39,7 +39,7 @@ public class Hero extends Mover {
         handleInput(character);
         key();
         gem();
-        door();
+        door(character, keyObtained);
         enemy();
         fireball();
         coin();
@@ -89,12 +89,18 @@ public class Hero extends Mover {
         if (isTouching(Gem.class)) {
             Actor gem = getOneIntersectingObject(Gem.class);  
             getWorld().removeObject(gem);
+            sb.addGem();
+            Greenfoot.playSound("gemSound.wav");
         }
     }
-    public void door() {
+    public void door(int character, boolean keyObtained) {
+        this.character = character;
+        this.keyObtained = keyObtained;
+        
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level2(character));
+            // sb.check();
         }
         if (isTouching(Door3.class) && isTouching(Door4.class) 
         && keyObtained == true) {
@@ -106,7 +112,7 @@ public class Hero extends Mover {
         }
         if (isTouching(Door7.class) && isTouching(Door8.class) 
         && keyObtained == true) {
-            Greenfoot.setWorld(new Level1(character));
+            Greenfoot.setWorld(new Titlescreen());
         }
     }
     public void enemy() {
@@ -126,11 +132,13 @@ public class Hero extends Mover {
             Actor coinGold = getOneIntersectingObject(CoinGold.class);  
             getWorld().removeObject(coinGold);
             sb.addGold();
+            Greenfoot.playSound("coinSound.wav");
         }   
         if (isTouching(CoinSilver.class)){
             Actor coinSilver = getOneIntersectingObject(CoinSilver.class);  
             getWorld().removeObject(coinSilver);
             sb.addSilver();
+            Greenfoot.playSound("coinSound.wav");
         }
     }       
     public void movingWall() {

@@ -14,9 +14,12 @@ public class Level4Picture extends Actor {
     }
     public void act() {
         sb = new ScoreBoard();
-        if (Greenfoot.mouseMoved(null))
+        mouseMovement();
+    }    
+    public void mouseMovement() {
+        if(Greenfoot.mouseMoved(null))
             onThis = Greenfoot.mouseMoved(this);
-        if (onThis)
+        if(onThis)
             setImage("Level4Picture2.png"); 
         else
             setImage("Level4Picture1.png"); 
@@ -24,5 +27,8 @@ public class Level4Picture extends Actor {
             Greenfoot.setWorld(new Level4(character));
             sb.reset();
         }
-    }    
+    }
+    public void access() {
+        
+    }
 }
