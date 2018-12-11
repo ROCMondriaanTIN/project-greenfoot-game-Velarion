@@ -28,7 +28,4 @@ public class Level4Picture extends Actor {
             sb.reset();
         }
     }
-    public void access() {
-        
-    }
 }

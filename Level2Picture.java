@@ -17,16 +17,16 @@ public class Level2Picture extends Actor {
         mouseMovement();
     }    
     public void mouseMovement() {
-            if(Greenfoot.mouseMoved(null))
-                onThis = Greenfoot.mouseMoved(this);
-            if(onThis)
-                setImage("Level2Picture2.png"); 
-            else
-                setImage("Level2Picture1.png"); 
-            if (Greenfoot.mouseClicked(this)){
-                Greenfoot.setWorld(new Level2(character));
-                sb.reset();
-            }
+        if(Greenfoot.mouseMoved(null))
+            onThis = Greenfoot.mouseMoved(this);
+        if(onThis)
+            setImage("Level2Picture2.png"); 
+        else
+            setImage("Level2Picture1.png"); 
+        if (Greenfoot.mouseClicked(this)){
+            Greenfoot.setWorld(new Level2(character));
+            sb.reset();
         }
+      }
     }
 

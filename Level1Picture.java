@@ -27,6 +27,5 @@ public class Level1Picture extends Actor {
             Greenfoot.setWorld(new Level1(character));
             sb.reset();
         }
-        
     }
 }

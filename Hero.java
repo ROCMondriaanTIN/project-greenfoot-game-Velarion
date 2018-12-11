@@ -15,6 +15,7 @@ public class Hero extends Mover {
     
     ScoreBoard sb;
     GoldenKey gk;
+    Victory vt;
     
     public Hero(int character) {         
         super();
@@ -27,6 +28,9 @@ public class Hero extends Mover {
 
     @Override
     public void act() {
+        if (vt == null) {
+            vt = new Victory();
+        }
         if (gk == null) {
             gk = new GoldenKey();
             getWorld().addObject(gk, + 40, + 120);
@@ -82,6 +86,7 @@ public class Hero extends Mover {
         if (isTouching(Key.class)) { 
            keyObtained = true;
            gk.change();
+           Greenfoot.playSound("keySound.wav");
         }
         return keyObtained;
     }
@@ -89,7 +94,7 @@ public class Hero extends Mover {
         if (isTouching(Gem.class)) {
             Actor gem = getOneIntersectingObject(Gem.class);  
             getWorld().removeObject(gem);
-            sb.addGem();
+            vt.addGem();
             Greenfoot.playSound("gemSound.wav");
         }
     }
@@ -100,19 +105,21 @@ public class Hero extends Mover {
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level2(character));
-            // sb.check();
+            Greenfoot.playSound("levelWinSound.wav");
         }
         if (isTouching(Door3.class) && isTouching(Door4.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level3(character));
+            Greenfoot.playSound("levelWinSound.wav");
         }
         if (isTouching(Door5.class) && isTouching(Door6.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level4(character));
+            Greenfoot.playSound("levelWinSound.wav");
         }
         if (isTouching(Door7.class) && isTouching(Door8.class) 
         && keyObtained == true) {
-            Greenfoot.setWorld(new Titlescreen());
+            Greenfoot.setWorld(new VictoryScreen());
         }
     }
     public void enemy() {
