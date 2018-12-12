@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Level3Picture extends Actor {
     private boolean onThis = false;
+    private boolean keyObtained = false;
     public int character;
     
     ScoreBoard sb;
@@ -28,4 +29,5 @@ public class Level3Picture extends Actor {
             sb.reset();
         }
     }
-}
+    }
+

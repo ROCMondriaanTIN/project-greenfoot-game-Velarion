@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Level2Picture extends Actor {
     private boolean onThis = false;
+    private boolean goldenKey1;
     public int character;
     
     ScoreBoard sb;
@@ -14,9 +15,9 @@ public class Level2Picture extends Actor {
     }
     public void act() {
         sb = new ScoreBoard();
-        mouseMovement();
+        mouseMovement(goldenKey1);
     }    
-    public void mouseMovement() {
+    public void mouseMovement(boolean goldenKey1) {
         if(Greenfoot.mouseMoved(null))
             onThis = Greenfoot.mouseMoved(this);
         if(onThis)

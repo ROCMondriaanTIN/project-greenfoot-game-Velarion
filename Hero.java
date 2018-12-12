@@ -9,9 +9,10 @@ public class Hero extends Mover {
     private boolean lookingLeft;
     private boolean lookingRight;
     private int animationCounter = 0; 
-    private int lifeAmount = 4;
     int character;
     private int frame = 1;
+    private boolean goldenKey1;
+    public static int life = 2;
     
     ScoreBoard sb;
     GoldenKey gk;
@@ -39,11 +40,11 @@ public class Hero extends Mover {
             sb = new ScoreBoard();
             getWorld().addObject(sb, + 900, + 50);
         }
-        sb.beginHealth(character);
+        sb.show(character);
         handleInput(character);
         key();
         gem();
-        door(character, keyObtained);
+        door(character);
         enemy();
         fireball();
         coin();
@@ -95,12 +96,12 @@ public class Hero extends Mover {
             Actor gem = getOneIntersectingObject(Gem.class);  
             getWorld().removeObject(gem);
             vt.addGem();
+            sb.showGem();
             Greenfoot.playSound("gemSound.wav");
         }
     }
-    public void door(int character, boolean keyObtained) {
+    public void door(int character) {
         this.character = character;
-        this.keyObtained = keyObtained;
         
         if (isTouching(Door1.class) && isTouching(Door2.class) 
         && keyObtained == true) {
@@ -122,14 +123,19 @@ public class Hero extends Mover {
             Greenfoot.setWorld(new VictoryScreen());
         }
     }
+    public void keyActivate1(boolean goldenKey1) {
+        this.goldenKey1 = goldenKey1;
+    }
     public void enemy() {
         if (isTouching(Enemy.class)) {
+            removeTouching(Enemy.class);
             setLocation(83, 1035);
             sb.healthRemove();
         }
     }
     public void fireball() {
         if (isTouching(Fireball.class)) {
+            removeTouching(Fireball.class);
             setLocation(83, 973);
             sb.healthRemove();
         } 
@@ -161,16 +167,22 @@ public class Hero extends Mover {
         }
     }
     public void water() {
-        if (isTouching(Water.class)) {
-            setLocation(83, 1035);
-            sb.healthRemove();
+        for (Actor water : getIntersectingObjects(WaterTile.class)) {
+            if (water != null) {
+                setLocation(83, 1035);
+                sb.healthRemove();
+            }
+            break;
         }
     }
     public void lava() {
-        if (isTouching(Lava.class)) {
-            setLocation(83, 973);
-            sb.healthRemove();
-        } 
+        for (Actor lava : getIntersectingObjects(LavaTile.class)) {
+            if (lava != null) {
+                setLocation(83, 973);
+                sb.healthRemove();
+            }
+            break;
+        }
     }
     public void animateRight(int character) {
         this.character = character;
