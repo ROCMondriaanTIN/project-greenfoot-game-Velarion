@@ -107,16 +107,19 @@ public class Hero extends Mover {
         && keyObtained == true) {
             Greenfoot.setWorld(new Level2(character));
             Greenfoot.playSound("levelWinSound.wav");
+            Level2Picture.keyObtained1 = true;
         }
         if (isTouching(Door3.class) && isTouching(Door4.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level3(character));
             Greenfoot.playSound("levelWinSound.wav");
+            Level3Picture.keyObtained2 = true;
         }
         if (isTouching(Door5.class) && isTouching(Door6.class) 
         && keyObtained == true) {
             Greenfoot.setWorld(new Level4(character));
             Greenfoot.playSound("levelWinSound.wav");
+            Level4Picture.keyObtained3 = true;
         }
         if (isTouching(Door7.class) && isTouching(Door8.class) 
         && keyObtained == true) {

@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Level2Picture extends Actor {
     private boolean onThis = false;
-    private boolean goldenKey1;
+    public static boolean keyObtained1;
     public int character;
     
     ScoreBoard sb;
@@ -15,18 +15,20 @@ public class Level2Picture extends Actor {
     }
     public void act() {
         sb = new ScoreBoard();
-        mouseMovement(goldenKey1);
+        mouseMovement(keyObtained1);
     }    
-    public void mouseMovement(boolean goldenKey1) {
-        if(Greenfoot.mouseMoved(null))
-            onThis = Greenfoot.mouseMoved(this);
-        if(onThis)
-            setImage("Level2Picture2.png"); 
-        else
-            setImage("Level2Picture1.png"); 
-        if (Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new Level2(character));
-            sb.reset();
+    public void mouseMovement(boolean keyObtained1) {
+        if (keyObtained1 == true) {
+            if(Greenfoot.mouseMoved(null))
+                onThis = Greenfoot.mouseMoved(this);
+            if(onThis)
+                setImage("Level2Picture2.png"); 
+            else
+                setImage("Level2Picture1.png"); 
+            if (Greenfoot.mouseClicked(this)){
+                Greenfoot.setWorld(new Level2(character));
+                sb.reset();
+            }
         }
       }
     }

@@ -9,6 +9,8 @@ public class Enemy extends Mover {
     private boolean firstAct;
     private int speed;
 
+    ScoreBoard sb;
+    
     public Enemy() {
         super();
         setImage("snailWalk1.png");
@@ -25,7 +27,7 @@ public class Enemy extends Mover {
     public void act() {
         int x = getX();
         int y = getY();
-
+        sb = new ScoreBoard();
         if (firstAct) {
             firstAct = false;
             xMin = x - walkRange / 2;

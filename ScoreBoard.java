@@ -62,6 +62,10 @@ public class ScoreBoard extends Actor {
         if (Hero.life == 0) {
             Greenfoot.setWorld(new GameOver());
             Greenfoot.playSound("gameOverSound.wav");
+            Victory.gem = 0;
+            Level2Picture.keyObtained1 = false;
+            Level3Picture.keyObtained2 = false;
+            Level4Picture.keyObtained3 = false;
             reset(); 
         }
     }
